@@ -1,0 +1,6 @@
+{
+  "name": "Charred Premium Burgers",
+  "description": "A premium, luxury, fully animated burger restaurant website with a cinematic dark theme and automatic WhatsApp ordering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

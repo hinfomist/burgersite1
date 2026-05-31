@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-hero: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  
+  --color-accent: #FF6B00;
+  --color-gold: #FFC857;
+  --color-bg: #080808;
+  --color-subtext: #B8B8B8;
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility hero-font {
+  font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+}
