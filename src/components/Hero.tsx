@@ -118,8 +118,8 @@ export default function Hero({ videoUrl, onOrderClick, onViewMenuClick }: HeroPr
 
   return (
     <section id="home" className="relative w-full min-h-screen flex items-center overflow-hidden bg-[#080808] pt-24">
-      
-      {/* Cinematic Video Background - Muted, Loop, Autoplay, No cover overlay to hide the beautiful video */}
+
+      {/* Cinematic Video Background */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
         <video
           key={videoUrl}
@@ -133,10 +133,6 @@ export default function Hero({ videoUrl, onOrderClick, onViewMenuClick }: HeroPr
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        
-        {/* Subtle vignette border highlights ONLY - No full dark covers */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-90 z-1" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#080808]/40 via-transparent to-[#080808]/40 pointer-events-none z-1" />
       </div>
 
       {/* HTML5 Fire Ember Canvas overlay */}
@@ -144,7 +140,7 @@ export default function Hero({ videoUrl, onOrderClick, onViewMenuClick }: HeroPr
 
       {/* Grid container */}
       <div className="relative max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 z-20 pointer-events-none">
-        
+
         {/* Left Side Content */}
         <div className="lg:col-span-7 flex flex-col justify-center text-left pointer-events-auto">
           {/* Flame element */}
@@ -174,7 +170,7 @@ export default function Hero({ videoUrl, onOrderClick, onViewMenuClick }: HeroPr
             BURGER.
           </motion.h1>
 
-          {/* Subheadline Inter */}
+          {/* Subheadline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -184,52 +180,89 @@ export default function Hero({ videoUrl, onOrderClick, onViewMenuClick }: HeroPr
             Indulge in our dry-aged premium Wagyu beef patties, hand-forged with gold-infused glazes, smoked oak hickory char, and house-made culinary truffles. Taste the exquisite ritual of pure fire.
           </motion.p>
 
-          {/* CTA buttons */}
+          {/* CTA buttons + Mobile Ticker side by side on mobile, buttons only on desktop */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-wrap items-center gap-5"
+            className="flex flex-col gap-4"
           >
-            <button
-              onClick={onOrderClick}
-              className="px-8 py-4 rounded-[2px] bg-[#FF6B00] hover:bg-[#E05300] hover:shadow-[0_0_30px_rgba(255,107,0,0.6)] text-white font-sans text-xs tracking-widest font-black uppercase transition-all duration-300 flex items-center gap-2 transform hover:scale-[1.02] cursor-pointer"
-            >
-              Order Premium Direct <ArrowRight className="w-4 h-4 text-white" />
-            </button>
-            
-            <button
-              onClick={onViewMenuClick}
-              className="px-8 py-4 rounded-[2px] border-2 border-white hover:border-[#FF6B00] bg-black/40 hover:bg-black/60 backdrop-blur-md text-white font-sans text-xs tracking-widest font-black uppercase transition-all duration-300 flex items-center gap-2 transform hover:scale-[1.02] cursor-pointer group"
-            >
-              Explore Menu <Play className="w-3.5 h-3.5 text-white group-hover:text-[#FFC857] transition-colors" />
-            </button>
+            {/* On mobile: buttons left, ticker right. On md+: buttons stacked normally */}
+            <div className="flex flex-row gap-3 md:gap-5 items-stretch">
+
+              {/* Buttons column — always shown */}
+              <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:gap-5 flex-shrink-0">
+                <button
+                  onClick={onOrderClick}
+                  className="px-5 md:px-8 py-3 md:py-4 rounded-[2px] bg-[#FF6B00] hover:bg-[#E05300] hover:shadow-[0_0_30px_rgba(255,107,0,0.6)] text-white font-sans text-[10px] md:text-xs tracking-widest font-black uppercase transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-[1.02] cursor-pointer"
+                >
+                  Order Premium Direct <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
+                </button>
+
+                <button
+                  onClick={onViewMenuClick}
+                  className="px-5 md:px-8 py-3 md:py-4 rounded-[2px] border-2 border-white hover:border-[#FF6B00] bg-black/40 hover:bg-black/60 backdrop-blur-md text-white font-sans text-[10px] md:text-xs tracking-widest font-black uppercase transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-[1.02] cursor-pointer group"
+                >
+                  Explore Menu <Play className="w-3 h-3 md:w-3.5 md:h-3.5 text-white group-hover:text-[#FFC857] transition-colors" />
+                </button>
+              </div>
+
+              {/* Mobile-only inline 2x2 ticker — hidden on md+ */}
+              <div className="flex md:hidden flex-1 grid grid-cols-2 gap-[1px] bg-[#FF6B00]/10 border border-[#FF6B00]/20 rounded-[2px] overflow-hidden">
+                <div className="flex flex-col items-center justify-center py-2 px-1 bg-[#080808]/90">
+                  <span className="font-heading text-[11px] text-[#FF6B00] font-black tracking-tight leading-tight text-center">100% WAGYU</span>
+                  <span className="text-[8px] font-mono tracking-wider text-[#B8B8B8] uppercase text-center leading-tight mt-0.5">Dry-Aged Cuts</span>
+                </div>
+                <div className="flex flex-col items-center justify-center py-2 px-1 bg-[#080808]/90">
+                  <span className="font-heading text-[11px] text-[#FFC857] font-black tracking-tight leading-tight text-center">OAK SMOKED</span>
+                  <span className="text-[8px] font-mono tracking-wider text-[#B8B8B8] uppercase text-center leading-tight mt-0.5">Charcoal Hearth</span>
+                </div>
+                <div className="flex flex-col items-center justify-center py-2 px-1 bg-[#080808]/90">
+                  <span className="font-heading text-[11px] text-white font-black tracking-tight leading-tight text-center">EXPEDITE</span>
+                  <span className="text-[8px] font-mono tracking-wider text-[#B8B8B8] uppercase text-center leading-tight mt-0.5">Hot &amp; Sealed</span>
+                </div>
+                <div className="flex flex-col items-center justify-center py-2 px-1 bg-[#080808]/90">
+                  <span className="font-heading text-[11px] text-[#FF6B00] font-black tracking-tight leading-tight text-center">GOLD GLAZED</span>
+                  <span className="text-[8px] font-mono tracking-wider text-[#B8B8B8] uppercase text-center leading-tight mt-0.5">Infused Honey</span>
+                </div>
+              </div>
+
+            </div>
           </motion.div>
         </div>
 
-        {/* Right Side - Empty because of background video viewability rules, allows video to remain perfectly clear on desktop */}
+        {/* Right Side - Empty for video visibility on desktop */}
         <div className="lg:col-span-5 hidden lg:block" />
       </div>
 
-      {/* Floating features ticker at the bottom */}
-      <div className="absolute bottom-0 left-0 w-full bg-[#080808]/90 border-t border-[#FF6B00]/20 py-5 z-20 pointer-events-none overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      {/* Desktop-only bottom ticker bar — hidden on mobile (md:block) */}
+      <div className="relative mt-auto left-0 w-full bg-[#080808]/90 border-t border-[#FF6B00]/20 py-5 z-20 pointer-events-none overflow-hidden hidden md:block">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-4 gap-0 text-center">
+
+          {/* Stat 1 */}
           <div className="flex flex-col">
             <span className="font-heading text-xl text-[#FF6B00] font-black tracking-tighter">100% WAGYU</span>
             <span className="text-[10px] font-mono tracking-widest text-[#B8B8B8] uppercase">Premium Dry-Aged Cuts</span>
           </div>
+
+          {/* Stat 2 */}
           <div className="flex flex-col border-l border-white/10">
             <span className="font-heading text-xl text-[#FFC857] font-black tracking-tighter">OAK SMOKED</span>
             <span className="text-[10px] font-mono tracking-widest text-[#B8B8B8] uppercase">Authentic Charcoal Hearth</span>
           </div>
+
+          {/* Stat 3 */}
           <div className="flex flex-col border-l border-white/10">
             <span className="font-heading text-xl text-white font-black tracking-tighter">EXPEDITE COURIER</span>
-            <span className="text-[10px] font-mono tracking-widest text-[#B8B8B8] uppercase">Delivered Hot & Sealed</span>
+            <span className="text-[10px] font-mono tracking-widest text-[#B8B8B8] uppercase">Delivered Hot &amp; Sealed</span>
           </div>
+
+          {/* Stat 4 */}
           <div className="flex flex-col border-l border-white/10">
             <span className="font-heading text-xl text-[#FF6B00] font-black tracking-tighter">GOLD GLAZED</span>
             <span className="text-[10px] font-mono tracking-widest text-[#B8B8B8] uppercase">Signature Infused Honey</span>
           </div>
+
         </div>
       </div>
 

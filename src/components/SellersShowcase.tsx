@@ -19,7 +19,7 @@ export default function SellersShowcase({ secondaryVideoUrl }: ShowcaseProps) {
 
   return (
     <section className="relative w-full py-28 bg-[#080808] border-b border-white/5 overflow-hidden">
-      
+
       {/* Floating ingredients backing layers */}
       {ingredients.map((ing, i) => (
         <motion.div
@@ -48,16 +48,16 @@ export default function SellersShowcase({ secondaryVideoUrl }: ShowcaseProps) {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#FF6B00]/5 blur-[150px] rounded-full pointer-events-none z-0" />
 
       <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center z-20">
-        
+
         {/* Left Column: Visual Storytelling Text */}
         <div className="lg:col-span-6 flex flex-col justify-center text-left">
-          
+
           <div className="flex items-center gap-2 mb-4">
             <Flame className="w-4 h-4 text-[#FF6B00] animate-pulse" />
             <span className="font-heading text-xs tracking-[0.2em] text-[#FFC857] font-black uppercase">CINEMATIC RETREAT</span>
           </div>
 
-          <h2 className="font-hero text-5xl sm:text-6xl text-white leading-[0.85] uppercase tracking-tighter mb-8 font-black">
+          <h2 className="font-hero text-4xl sm:text-6xl text-white leading-[0.85] uppercase tracking-tighter mb-8 font-black pr-8 sm:pr-0">
             HEIRLOOM QUALITY.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#FFC857]">
               UNCONDITIONAL UMAMI.
@@ -92,10 +92,10 @@ export default function SellersShowcase({ secondaryVideoUrl }: ShowcaseProps) {
         {/* Right Column: Interactive Commercial video screen window */}
         <div className="lg:col-span-6 flex justify-center">
           <div className="relative w-full max-w-lg aspect-video rounded-[2px] p-[3px] bg-gradient-to-r from-[#FF6B00]/50 to-[#FFC857]/50 shadow-[0_20px_50px_rgba(255,107,0,0.15)] group overflow-hidden">
-            
+
             {/* Ambient background element */}
             <div className="absolute inset-x-0 -bottom-10 h-32 bg-gradient-to-t from-[#FF6B00]/40 to-transparent blur-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            
+
             {/* Golden frame reflection highlights */}
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-white/10 via-transparent to-white/10 pointer-events-none z-10 rounded-[2px]" />
 
